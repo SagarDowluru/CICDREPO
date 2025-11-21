@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkflowDefinitions creationDate="2025-07-17T11:00:53Z" versionNumber="2025.08.5.3ae279b">
+   <WorkflowDefinition version="1">
+      <Name>AOC_Description_Similarity</Name>
+      <Description/>
+      <LastUpdatedBy>hariprasad alluru</LastUpdatedBy>
+      <Variables/>
+      <Views/>
+      <WorkFlowTrees/>
+      <DistributionItems/>
+      <WorkflowDecisionTables/>
+      <SequentialFlow>
+         <SequenceNumber>0</SequenceNumber>
+         <FlowParts>
+            <FlowPart type="ColemanTask">
+               <SequenceNumber>4</SequenceNumber>
+               <Name>Redeploy Endpoint</Name>
+               <ColemanTaskConfiguration>{"commandType":"REDEPLOY_ENDPOINT","encryptedSerializedServiceAccount":null,"colemanQuestName":"AOC_Similarity_Quest","questNameVariable":null,"ignoreErrors":false,"errorCodeVariableName":null,"errorMessageVariableName":null,"intialCallMaxRetryTimeSeconds":300}</ColemanTaskConfiguration>
+            </FlowPart>
+            <FlowPart type="ColemanTask">
+               <SequenceNumber>1</SequenceNumber>
+               <Name>Reload Datasets</Name>
+               <ColemanTaskConfiguration>{"commandType":"RELOAD_DATA","encryptedSerializedServiceAccount":null,"colemanQuestName":"AOC_Similarity_Quest","questNameVariable":null,"ignoreErrors":false,"errorCodeVariableName":null,"errorMessageVariableName":null,"intialCallMaxRetryTimeSeconds":300}</ColemanTaskConfiguration>
+            </FlowPart>
+            <FlowPart type="ColemanTask">
+               <SequenceNumber>2</SequenceNumber>
+               <Name>Retrain Model</Name>
+               <ColemanTaskConfiguration>{"commandType":"TRAIN_QUEST","encryptedSerializedServiceAccount":null,"colemanQuestName":"AOC_Similarity_Quest","questNameVariable":null,"ignoreErrors":false,"errorCodeVariableName":null,"errorMessageVariableName":null,"intialCallMaxRetryTimeSeconds":300}</ColemanTaskConfiguration>
+            </FlowPart>
+            <FlowPart type="ColemanTask">
+               <SequenceNumber>3</SequenceNumber>
+               <Name>Real time production</Name>
+               <ColemanTaskConfiguration>{"commandType":"UPDATE_QUEST","encryptedSerializedServiceAccount":null,"colemanQuestName":"AOC_Similarity_Quest","questNameVariable":null,"ignoreErrors":false,"errorCodeVariableName":null,"errorMessageVariableName":null,"intialCallMaxRetryTimeSeconds":300}</ColemanTaskConfiguration>
+            </FlowPart>
+         </FlowParts>
+      </SequentialFlow>
+   </WorkflowDefinition>
+</WorkflowDefinitions>
